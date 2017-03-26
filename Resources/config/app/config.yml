@@ -1,0 +1,5 @@
+adevis_resource:
+    resources:
+        adevis.location:
+            classes:
+                model: %location.entity.class%

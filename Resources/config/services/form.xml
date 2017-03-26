@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="adevis_bundle_location.form_type_frontend.location_type" class="Miky\Bundle\LocationBundle\Form\Type\Frontend\LocationType">
+            <tag name="form.type"  alias="adevis_location"/>
+        </service>
+        <service id="adevis_bundle_location.form_type_backend.location_admin_type" class="Miky\Bundle\LocationBundle\Form\Type\Backend\LocationAdminType">
+            <tag name="form.type" alias="adevis_location_admin"/>
+        </service>
+    </services>
+
+</container>

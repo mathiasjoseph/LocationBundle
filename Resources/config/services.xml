@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--<imports>-->
+        <!--<import resource="services/doctrine.xml" />-->
+        <!--<import resource="services/form.xml" />-->
+        <!--<import resource="services/manager.xml" />-->
+        <!--<import resource="services/webservice.xml" />-->
+        <!--<import resource="services/twig.xml" />-->
+    <!--</imports>-->
+    <!--<services>-->
+        <!--<service id="adevis_bundle_location.installer.location_installer" class="Miky\Bundle\LocationBundle\Installer\LocationInstaller">-->
+          <!--<argument id="adevis_country_manager" type="service"/>-->
+            <!--<argument id="adevis_continent_manager" type="service"/>-->
+            <!--<tag name="adevis.installer"/>-->
+        <!--</service>-->
+    <!--</services>-->
+</container>
