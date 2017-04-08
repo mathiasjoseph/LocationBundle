@@ -1,5 +1,5 @@
-adevis_resource:
+miky_resource:
     resources:
-        adevis.location:
+        miky.location:
             classes:
                 model: %location.entity.class%

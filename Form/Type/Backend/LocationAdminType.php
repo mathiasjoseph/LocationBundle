@@ -16,20 +16,20 @@ class LocationAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array('label'=> 'adevis.ui.name'))
-            ->add('streetNumber', TextType::class, array('label'=> 'adevis.location.streetNumber'))
-            ->add('street', TextType::class, array('label'=> 'adevis.location.street'))
-            ->add('postalCode', TextType::class, array('label'=> 'adevis.location.postalCode'))
-            ->add('city', TextType::class, array('label'=> 'adevis.location.city'))
-            ->add('country', TextType::class, array('label'=> 'adevis.location.country'))
-            ->add('countryShortName', TextType::class, array('label'=> 'adevis.location.countryShortName'))
-            ->add('continent', TextType::class, array('label'=> 'adevis.location.continent'))
-            ->add('continentShortName', TextType::class, array('label'=> 'adevis.location.continentShortName'))
-            ->add('formattedAddress', TextType::class, array('label'=> 'adevis.location.formattedAddress'))
-            ->add('administrativeAreaLevel2', TextType::class, array('label'=> 'adevis.location.administrativeAreaLevel2'))
-            ->add('administrativeAreaLevel1', TextType::class, array('label'=> 'adevis.location.administrativeAreaLevel1'))
-            ->add('latitude', TextType::class, array('label'=> 'adevis.location.latitude'))
-            ->add('longitude', TextType::class, array('label'=> 'adevis.location.longitude'));
+            ->add('name', TextType::class, array('label'=> 'miky.ui.name'))
+            ->add('streetNumber', TextType::class, array('label'=> 'miky.location.streetNumber'))
+            ->add('street', TextType::class, array('label'=> 'miky.location.street'))
+            ->add('postalCode', TextType::class, array('label'=> 'miky.location.postalCode'))
+            ->add('city', TextType::class, array('label'=> 'miky.location.city'))
+            ->add('country', TextType::class, array('label'=> 'miky.location.country'))
+            ->add('countryShortName', TextType::class, array('label'=> 'miky.location.countryShortName'))
+            ->add('continent', TextType::class, array('label'=> 'miky.location.continent'))
+            ->add('continentShortName', TextType::class, array('label'=> 'miky.location.continentShortName'))
+            ->add('formattedAddress', TextType::class, array('label'=> 'miky.location.formattedAddress'))
+            ->add('administrativeAreaLevel2', TextType::class, array('label'=> 'miky.location.administrativeAreaLevel2'))
+            ->add('administrativeAreaLevel1', TextType::class, array('label'=> 'miky.location.administrativeAreaLevel1'))
+            ->add('latitude', TextType::class, array('label'=> 'miky.location.latitude'))
+            ->add('longitude', TextType::class, array('label'=> 'miky.location.longitude'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -4,16 +4,16 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service class="Miky\Bundle\LocationBundle\Manager\LocationManager" id="adevis_location_manager">
+        <service class="Miky\Bundle\LocationBundle\Manager\LocationManager" id="miky_location_manager">
             <argument id="doctrine.orm.entity_manager" type="service"/>
             <argument>%location.entity.class%</argument>
         </service>
-        <service class="Miky\Bundle\LocationBundle\Manager\ContinentManager" id="adevis_continent_manager">
+        <service class="Miky\Bundle\LocationBundle\Manager\ContinentManager" id="miky_continent_manager">
             <argument id="doctrine.orm.entity_manager" type="service"/>
             <argument>%continent.entity.class%</argument>
             <argument id="location.webservices.geo_list_provider" type="service"/>
         </service>
-        <service class="Miky\Bundle\LocationBundle\Manager\CountryManager" id="adevis_country_manager">
+        <service class="Miky\Bundle\LocationBundle\Manager\CountryManager" id="miky_country_manager">
             <argument id="doctrine.orm.entity_manager" type="service"/>
             <argument>%country.entity.class%</argument>
             <argument id="location.webservices.geo_list_provider" type="service"/>

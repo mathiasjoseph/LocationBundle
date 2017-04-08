@@ -6,10 +6,10 @@
 
 
     <services>
-        <service id="adevis_bundle_location.twig.location_extension"
+        <service id="miky_bundle_location.twig.location_extension"
                  class="Miky\Bundle\LocationBundle\Twig\LocationExtension"
                  public="false">
-            <argument type="service" id="adevis_country_manager"/>
+            <argument type="service" id="miky_country_manager"/>
             <argument type="service" id="request_stack"/>
             <tag name="twig.extension" />
         </service>

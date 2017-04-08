@@ -30,7 +30,7 @@ class LoadLocationData extends AbstractFixture  implements OrderedFixtureInterfa
 
     public function load(ObjectManager $manager)
     {
-        $locationManager = $this->container->get('adevis_location_manager');
+        $locationManager = $this->container->get('miky_location_manager');
         $location = $locationManager->createLocation();
 
         $location->setCity('test');

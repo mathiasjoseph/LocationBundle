@@ -12,10 +12,10 @@
         <!--<import resource="services/twig.xml" />-->
     <!--</imports>-->
     <!--<services>-->
-        <!--<service id="adevis_bundle_location.installer.location_installer" class="Miky\Bundle\LocationBundle\Installer\LocationInstaller">-->
-          <!--<argument id="adevis_country_manager" type="service"/>-->
-            <!--<argument id="adevis_continent_manager" type="service"/>-->
-            <!--<tag name="adevis.installer"/>-->
+        <!--<service id="miky_bundle_location.installer.location_installer" class="Miky\Bundle\LocationBundle\Installer\LocationInstaller">-->
+          <!--<argument id="miky_country_manager" type="service"/>-->
+            <!--<argument id="miky_continent_manager" type="service"/>-->
+            <!--<tag name="miky.installer"/>-->
         <!--</service>-->
     <!--</services>-->
 </container>

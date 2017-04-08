@@ -18,11 +18,11 @@ class LocationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array('label'=> 'adevis.ui.name'))
+            ->add('name', TextType::class, array('label'=> 'miky.ui.name'))
             ->add('streetNumber', HiddenType::class)
             ->add('street', HiddenType::class)
             ->add('formattedAddress', TextType::class, array(
-                'label'=> 'adevis.ui.address',
+                'label'=> 'miky.ui.address',
                 'required' => true
             ))
             ->add('postalCode', HiddenType::class)
