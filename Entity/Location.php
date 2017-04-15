@@ -2,8 +2,9 @@
 
 namespace Miky\Bundle\LocationBundle\Entity;
 
-use Miky\Bundle\CoreBundle\Entity\Traits\MikyCommonInterface;
-use Miky\Bundle\CoreBundle\Entity\Traits\MikyCommonTrait;
+
+use Miky\Component\Core\Model\CommonModelInterface;
+use Miky\Component\Core\Model\CommonModelTrait;
 use Miky\Component\Location\Model\Location as BaseLocation;
 use Miky\Component\Resource\Model\ResourceInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,9 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Location
  */
-class Location extends BaseLocation implements ResourceInterface, MikyCommonInterface
+class Location extends BaseLocation implements ResourceInterface, CommonModelInterface
 {
-    Use MikyCommonTrait;
+    Use CommonModelTrait;
 
 
     /**
