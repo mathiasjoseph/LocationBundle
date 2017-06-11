@@ -9,10 +9,10 @@
 namespace Miky\Bundle\LocationBundle\Manager;
 
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
 use Miky\Bundle\LocationBundle\Entity\Continent;
 use Miky\Bundle\LocationBundle\Webservices\GeoList\GeoListProvider;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class ContinentManager implements ObjectManagerInterface

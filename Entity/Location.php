@@ -7,7 +7,6 @@ use Miky\Component\Core\Model\CommonModelInterface;
 use Miky\Component\Core\Model\CommonModelTrait;
 use Miky\Component\Location\Model\Location as BaseLocation;
 use Miky\Component\Resource\Model\ResourceInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Location

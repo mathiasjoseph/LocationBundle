@@ -8,10 +8,10 @@
 
 namespace Miky\Bundle\LocationBundle\Manager;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
 use Miky\Bundle\LocationBundle\Entity\Country;
 use Miky\Bundle\LocationBundle\Webservices\GeoList\GeoListProvider;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 

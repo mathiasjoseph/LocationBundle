@@ -8,9 +8,9 @@
 
 namespace Miky\Bundle\LocationBundle\Manager;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
 use Miky\Bundle\LocationBundle\Model\Location;
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class LocationManager implements ObjectManagerInterface
