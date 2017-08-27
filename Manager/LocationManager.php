@@ -8,39 +8,23 @@
 
 namespace Miky\Bundle\LocationBundle\Manager;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
+
+use Miky\Bundle\CoreBundle\Doctrine\BaseEntityManager;
 use Miky\Bundle\LocationBundle\Model\Location;
+use Miky\Component\Location\Model\LocationInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
-class LocationManager implements ObjectManagerInterface
+class LocationManager extends BaseEntityManager
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
-
-    /**
-     * @var string
-     */
-    protected $class;
-
-    /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
-     */
-    protected $repository;
 
     /**
      * Constructor.
-     * @param ObjectManager $om
+     * @param $em
      * @param string $class
      */
-    public function __construct(ObjectManager $om, $class)
+    public function __construct($em, $class)
     {
-        $this->objectManager = $om;
-        $this->repository = $om->getRepository($class);
-        $metadata = $om->getClassMetadata($class);
-        $this->class = $metadata->getName();
+        parent::__construct($em, $class);
     }
 
     /**
@@ -48,8 +32,8 @@ class LocationManager implements ObjectManagerInterface
      */
     public function deleteLocation(Location $location)
     {
-        $this->objectManager->remove($location);
-        $this->objectManager->flush();
+        $this->entityManager->remove($location);
+        $this->entityManager->flush();
     }
 
     public function getClass()
@@ -74,7 +58,7 @@ class LocationManager implements ObjectManagerInterface
 
     public function reloadLocation(Location $location)
     {
-        $this->objectManager->refresh($location);
+        $this->entityManager->refresh($location);
     }
 
     /**
@@ -85,14 +69,14 @@ class LocationManager implements ObjectManagerInterface
      */
     public function updateLocation(Location $location, $andFlush = true)
     {
-        $this->objectManager->persist($location);
+        $this->entityManager->persist($location);
         if ($andFlush) {
-            $this->objectManager->flush();
+            $this->entityManager->flush();
         }
     }
 
     /**
-     * Returns an empty LOcationInterface instance
+     * Returns an empty LocationInterface instance
      *
      * @return LocationInterface
      */
@@ -108,7 +92,7 @@ class LocationManager implements ObjectManagerInterface
     /**
      * Refreshed a Location by Location Instance
      * @param LocationInterface $location
-     * @return Ad
+     * @return LocationInterface
      */
     public function refreshLocation(Location $location)
     {

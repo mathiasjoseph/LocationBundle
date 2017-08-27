@@ -9,42 +9,25 @@
 namespace Miky\Bundle\LocationBundle\Manager;
 
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
-use Miky\Bundle\LocationBundle\Entity\Continent;
+use Doctrine\Common\Persistence\entityManager;
+use Miky\Bundle\CoreBundle\Doctrine\BaseEntityManager;
+use Miky\Bundle\LocationBundle\Model\Continent;
 use Miky\Bundle\LocationBundle\Webservices\GeoList\GeoListProvider;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
-class ContinentManager implements ObjectManagerInterface
+class ContinentManager extends BaseEntityManager
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
-
-    /**
-     * @var string
-     */
-    protected $class;
-
-    /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
-     */
-    protected $repository;
 
     protected $geoListProvider;
 
     /**
      * Constructor.
-     * @param ObjectManager $om
+     * @param $em
      * @param string $class
      */
-    public function __construct(ObjectManager $om, $class, GeoListProvider $geoListProvider)
+    public function __construct($em, $class, GeoListProvider $geoListProvider)
     {
-        $this->objectManager = $om;
-        $this->repository = $om->getRepository($class);
-        $metadata = $om->getClassMetadata($class);
-        $this->class = $metadata->getName();
+        parent::__construct($em, $class);
         $this->geoListProvider = $geoListProvider;
     }
 
@@ -53,8 +36,8 @@ class ContinentManager implements ObjectManagerInterface
      */
     public function deleteContinent(Continent $continent)
     {
-        $this->objectManager->remove($continent);
-        $this->objectManager->flush();
+        $this->entityManager->remove($continent);
+        $this->entityManager->flush();
     }
 
     public function getClass()
@@ -89,24 +72,24 @@ class ContinentManager implements ObjectManagerInterface
     }
     public function reloadContinent(Continent $continent)
     {
-        $this->objectManager->refresh($continent);
+        $this->entityManager->refresh($continent);
     }
 
 
     public function loadContinentFromApi(){
         $currents = $this->findContinents();
         foreach ($currents as $b){
-            $this->objectManager->remove($b);
+            $this->entityManager->remove($b);
         }
-        $this->objectManager->flush();
+        $this->entityManager->flush();
         $list = $this->geoListProvider->getContinentList();
         foreach ($list as $c){
             $continent = $this->createContinent();
             $continent->setName($c['name']);
             $continent->setShortName($c['code']);
-            $this->objectManager->persist($continent);
+            $this->entityManager->persist($continent);
         }
-        $this->objectManager->flush();
+        $this->entityManager->flush();
     }
     /**
      * Updates a Continent.
@@ -116,9 +99,9 @@ class ContinentManager implements ObjectManagerInterface
      */
     public function updateContinent(Continent $continent, $andFlush = true)
     {
-        $this->objectManager->persist($continent);
+        $this->entityManager->persist($continent);
         if ($andFlush) {
-            $this->objectManager->flush();
+            $this->entityManager->flush();
         }
     }
 

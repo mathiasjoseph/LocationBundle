@@ -8,46 +8,25 @@
 
 namespace Miky\Bundle\LocationBundle\Manager;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Miky\Bundle\CoreBundle\Manager\ObjectManagerInterface;
-use Miky\Bundle\LocationBundle\Entity\Country;
+use Doctrine\ORM\EntityManager;
+use Miky\Bundle\CoreBundle\Doctrine\BaseEntityManager;
+use Miky\Bundle\LocationBundle\Model\Country;
 use Miky\Bundle\LocationBundle\Webservices\GeoList\GeoListProvider;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
-class CountryManager implements ObjectManagerInterface
+class CountryManager extends BaseEntityManager
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
-
-    /**
-     * @var string
-     */
-    protected $class;
-
-    /**
-     * @var \Doctrine\Common\Persistence\ObjectRepository
-     */
-    protected $repository;
-
     protected $geoListProvider;
 
     protected $locales;
 
     protected $requestStack;
-    /**
-     * Constructor.
-     * @param ObjectManager $om
-     * @param string $class
-     */
-    public function __construct(ObjectManager $om, $class, GeoListProvider $geoListProvider, RequestStack $requestStack, $locales)
+    
+    
+    public function __construct(EntityManager $em, $class,  GeoListProvider $geoListProvider, RequestStack $requestStack, $locales)
     {
-        $this->objectManager = $om;
-        $this->repository = $om->getRepository($class);
-        $metadata = $om->getClassMetadata($class);
-        $this->class = $metadata->getName();
+        parent::__construct($em, $class);
         $this->geoListProvider = $geoListProvider;
         $this->requestStack = $requestStack;
         $this->locales = $locales;
@@ -58,8 +37,8 @@ class CountryManager implements ObjectManagerInterface
      */
     public function deleteCountry(Country $country)
     {
-        $this->objectManager->remove($country);
-        $this->objectManager->flush();
+        $this->entityManager->remove($country);
+        $this->entityManager->flush();
     }
     public function getArrayByName(){
         $countries = $this->findCountries();
@@ -103,15 +82,15 @@ class CountryManager implements ObjectManagerInterface
 
     public function reloadCountry(Country $country)
     {
-        $this->objectManager->refresh($country);
+        $this->entityManager->refresh($country);
     }
 
     public function loadCountriesFromApi(){
         $currents = $this->findCountries();
         foreach ($currents as $b){
-            $this->objectManager->remove($b);
+            $this->entityManager->remove($b);
         }
-        $this->objectManager->flush();
+        $this->entityManager->flush();
         $list = $this->geoListProvider->getCountryList();
         foreach ($list as $c){
             $country = $this->createCountry();
@@ -120,9 +99,9 @@ class CountryManager implements ObjectManagerInterface
             $country->setContinent($c['region']);
             $country->setCapital($c['capital']);
 
-            $this->objectManager->persist($country);
+            $this->entityManager->persist($country);
         }
-        $this->objectManager->flush();
+        $this->entityManager->flush();
     }
 
     /**
@@ -133,9 +112,9 @@ class CountryManager implements ObjectManagerInterface
      */
     public function updateCountry(Country $country, $andFlush = true)
     {
-        $this->objectManager->persist($country);
+        $this->entityManager->persist($country);
         if ($andFlush) {
-            $this->objectManager->flush();
+            $this->entityManager->flush();
         }
     }
 

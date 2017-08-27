@@ -2,6 +2,9 @@
 
 namespace Miky\Bundle\LocationBundle\DependencyInjection;
 
+use Miky\Bundle\LocationBundle\Doctrine\Entity\Continent;
+use Miky\Bundle\LocationBundle\Doctrine\Entity\Country;
+use Miky\Bundle\LocationBundle\Doctrine\Entity\Location;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -12,6 +15,16 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+    private $useDefaultEntities;
+
+    /**
+     * Configuration constructor.
+     */
+    public function __construct($useDefaultEntities)
+    {
+        $this->useDefaultEntities = $useDefaultEntities;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -19,6 +32,23 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('miky_location');
+        if ($this->useDefaultEntities){
+            $rootNode
+                ->children()
+                ->scalarNode('location_class')->defaultValue(Location::class)->cannotBeEmpty()->end()
+                ->scalarNode('country_class')->defaultValue(Country::class)->cannotBeEmpty()->end()
+                ->scalarNode('continent_class')->defaultValue(Continent::class)->cannotBeEmpty()->end()
+                ->end();
+        }else{
+            $rootNode
+                ->children()
+                ->scalarNode('location_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('country_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('continent_class')->isRequired()->cannotBeEmpty()->end()
+                ->end();
+        }
+
+
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

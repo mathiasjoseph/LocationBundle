@@ -2,28 +2,43 @@
 
 namespace Miky\Bundle\LocationBundle\DependencyInjection;
 
+use Miky\Bundle\CoreBundle\DependencyInjection\AbstractCoreExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration.
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class MikyLocationExtension extends Extension
+class MikyLocationExtension extends AbstractCoreExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration();
+        $configuration = new Configuration($container->getParameter("miky_payment.use_default_entities"));
+
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $this->remapParametersNamespaces($config, $container, array(
+            '' => array(
+                'location_class' => 'miky_location.model.location.class',
+                'country_class' => 'miky_location.model.country.class',
+                'continent_class' => 'miky_location.model.continent.class',
+            ),
+        ));
+    }
+
+    public function prepend(ContainerBuilder $container)
+    {
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/app'));
+        $loader->load('config.yml');
     }
 }

@@ -2,4 +2,4 @@ miky_resource:
     resources:
         miky.location:
             classes:
-                model: %location.entity.class%
+                model: %miky_location.model.location.class%
