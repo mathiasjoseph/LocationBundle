@@ -20,7 +20,7 @@ class MikyLocationExtension extends AbstractCoreExtension implements PrependExte
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration($container->getParameter("miky_payment.use_default_entities"));
+        $configuration = new Configuration($container->getParameter("miky_location.use_default_entities"));
 
         $config = $this->processConfiguration($configuration, $configs);
 
