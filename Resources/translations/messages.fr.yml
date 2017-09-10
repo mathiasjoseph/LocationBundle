@@ -1,4 +1,5 @@
 miky_location:
+    location: Localisation
     city: Ville
     country: Pays
     postCode: Code Postal
@@ -20,3 +21,4 @@ miky_location:
     categories: Catégories
     country: Pays
     continent: Continent
+    gm_api_key: Clé d'api Google Maps
