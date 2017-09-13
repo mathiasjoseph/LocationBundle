@@ -1,4 +1,5 @@
 {% set setting_location = miky_settings('location') %}
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places&key={{ setting_location.gm_api_key }}&language={{ app.request.locale }}">
-</script><script src="{{ asset("bundles/mikylocation/js/google/autocomplete.js") }}" type="text/javascript"></script>
+</script>
+{#<script src="{{ asset("bundles/mikylocation/js/google/autocomplete.js") }}" type="text/javascript"></script>#}
