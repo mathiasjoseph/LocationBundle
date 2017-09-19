@@ -64,7 +64,11 @@ function onPlaceChanged() {
 
 
 google.maps.event.addDomListener(window, 'load', function () {
-    initializeMap();
-    initializeAutocomplete('gm_autocomplete_address');
+    var element = $(".gm_autocomplete_address")[0];
+    if (element) {
+        initializeMap();
+        initializeAutocomplete('gm_autocomplete_address');
+    }
+
 });
 

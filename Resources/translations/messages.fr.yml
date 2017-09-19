@@ -18,6 +18,7 @@ miky_location:
     please_type_address: S'il vous plaît taper une adresse ...
     continents: Continents
     countries: Pays
+    choose_country: Choisir un pays
     categories: Catégories
     country: Pays
     continent: Continent
