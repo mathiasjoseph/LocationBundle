@@ -19,17 +19,17 @@ class CountryManager extends BaseEntityManager
 {
     protected $geoListProvider;
 
-    protected $locales;
+
 
     protected $requestStack;
     
     
-    public function __construct(EntityManager $em, $class,  GeoListProvider $geoListProvider, RequestStack $requestStack, $locales)
+    public function __construct(EntityManager $em, $class,  GeoListProvider $geoListProvider, RequestStack $requestStack)
     {
         parent::__construct($em, $class);
         $this->geoListProvider = $geoListProvider;
         $this->requestStack = $requestStack;
-        $this->locales = $locales;
+
     }
 
     /**

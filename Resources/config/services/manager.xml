@@ -18,7 +18,6 @@
             <argument>%miky_location.model.country.class%</argument>
             <argument id="location.webservices.geo_list_provider" type="service"/>
             <argument id="request_stack" type="service"/>
-            <argument>%locales%</argument>
         </service>
     </services>
 </container>
