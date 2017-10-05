@@ -8,10 +8,6 @@ guzzle:
             base_url: "http://ws.detectlanguage.com"
             headers:
                 Accept: "application/json"
-        api_currency_list:
-            base_url: "https://openexchangerates.org"
-            headers:
-                Accept: "application/json"
 miky_resource:
     resources:
         miky.location:

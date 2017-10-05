@@ -23,3 +23,4 @@ miky_location:
     country: Pays
     continent: Continent
     gm_api_key: Clé d'api Google Maps
+    enter_the_exact_address_drag_the_map_marker_to_position: Entrez l'adresse exacte ou faites glisser le marqueur de la carte vers la position
