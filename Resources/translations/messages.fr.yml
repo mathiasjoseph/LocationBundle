@@ -1,0 +1,26 @@
+miky_location:
+    location: Localisation
+    city: Ville
+    country: Pays
+    postCode: Code Postal
+    countryShortName: Code Pays
+    address: Adresse
+    street: Rue
+    name: Nom
+    continentShortName: Code continent
+    continent: Continent
+    postalCode: Code Postal
+    administrativeAreaLevel2: Département
+    administrativeAreaLevel1: Région
+    latitude: Latitude
+    longitude: Longitude
+    formattedAddress: Adresse formatée
+    please_type_address: S'il vous plaît taper une adresse ...
+    continents: Continents
+    countries: Pays
+    choose_country: Choisir un pays
+    categories: Catégories
+    country: Pays
+    continent: Continent
+    gm_api_key: Clé d'api Google Maps
+    enter_the_exact_address_drag_the_map_marker_to_position: Entrez l'adresse exacte ou faites glisser le marqueur de la carte vers la position

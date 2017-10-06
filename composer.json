@@ -1,0 +1,31 @@
+{
+  "name" : "mikycorp/locationbundle",
+  "description" : "A Location bundle",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "Mathias Joseph",
+    "email" : "mathias89100@gmail.com"
+  }],
+  "keywords" : [
+    "location bundle"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+    "mikycorp/corebundle": "~1.0"
+  },
+  "autoload" : {
+    "psr-0" : {
+      "Miky\\Bundle\\LocationBundle" : ""
+    }
+  },
+  "target-dir" : "Miky/Bundle/LocationBundle",
+  "repositories" : [{
+  }],
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "1-dev"
+    }
+  }
+}

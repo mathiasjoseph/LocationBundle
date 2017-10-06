@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service class="Miky\Bundle\LocationBundle\Manager\LocationManager" id="miky_location_manager">
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+            <argument>%miky_location.model.location.class%</argument>
+        </service>
+        <service class="Miky\Bundle\LocationBundle\Manager\ContinentManager" id="miky_continent_manager">
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+            <argument>%miky_location.model.continent.class%</argument>
+            <argument id="location.webservices.geo_list_provider" type="service"/>
+        </service>
+        <service class="Miky\Bundle\LocationBundle\Manager\CountryManager" id="miky_country_manager">
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+            <argument>%miky_location.model.country.class%</argument>
+            <argument id="location.webservices.geo_list_provider" type="service"/>
+            <argument id="request_stack" type="service"/>
+        </service>
+    </services>
+</container>
